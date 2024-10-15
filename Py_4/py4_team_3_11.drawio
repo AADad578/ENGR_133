@@ -1,0 +1,54 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.16">
+  <diagram name="Page-1" id="6ZRZwa045F7b6_0qrQRd">
+    <mxGraphModel dx="1461" dy="725" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cc3nU6-B6ktecfyQw7j_-1" target="Cc3nU6-B6ktecfyQw7j_-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cc3nU6-B6ktecfyQw7j_-2" target="Cc3nU6-B6ktecfyQw7j_-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-2" value="Input Name,&amp;nbsp;&lt;div&gt;path length,&amp;nbsp;&lt;/div&gt;&lt;div&gt;and coefficient&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="332" y="120" width="186" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cc3nU6-B6ktecfyQw7j_-3" target="Cc3nU6-B6ktecfyQw7j_-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-3" value="Calculate the concentration for each value" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="348" y="332" width="154" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cc3nU6-B6ktecfyQw7j_-4" target="Cc3nU6-B6ktecfyQw7j_-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-4" value="Print the values" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="332" y="432" width="186" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-8" value="End" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="522" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cc3nU6-B6ktecfyQw7j_-10" target="Cc3nU6-B6ktecfyQw7j_-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Cc3nU6-B6ktecfyQw7j_-10" target="Cc3nU6-B6ktecfyQw7j_-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="190" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="425" y="290" />
+              <mxPoint x="591" y="290" />
+              <mxPoint x="591" y="190" />
+              <mxPoint x="425" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cc3nU6-B6ktecfyQw7j_-10" value="Repeatedly input the&amp;nbsp;&lt;div&gt;absorbency values&amp;nbsp;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="332" y="210" width="186" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.12">
+  <diagram name="Page-1" id="gNpFIy-3t-3sYpRz45l4">
+    <mxGraphModel dx="1461" dy="725" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Unk9erDRbZYcMXh6jzqr-1" target="Unk9erDRbZYcMXh6jzqr-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="70" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Unk9erDRbZYcMXh6jzqr-2" target="Unk9erDRbZYcMXh6jzqr-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-2" value="Input first resistor" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="297" y="150" width="186" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Unk9erDRbZYcMXh6jzqr-4" target="Unk9erDRbZYcMXh6jzqr-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-4" value="Calculate Series Resistance using S = R1 + R2" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="313" y="240" width="154" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Unk9erDRbZYcMXh6jzqr-6" target="Unk9erDRbZYcMXh6jzqr-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-6" value="Calculate Parallel Resistance using P = 1/(1/R1 + 1/R2)" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="313" y="347" width="154" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="Unk9erDRbZYcMXh6jzqr-8" value="Output Parallel and&amp;nbsp;&lt;div&gt;Series resistances&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="297" y="450" width="186" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
