@@ -46,13 +46,13 @@ def v_encrypt(text, u_key):
             key_ord = ord(c)
             shift = (key_ord - 65)
             key_value.append(shift)
-
+    print(key_value)
     #main for loop that goes through all of the characters in the string
     new_message = ""
     for i in range(a):
         l = text[i]  
+        u = i % len(key_value)
         text_ord = ord(l) #cagegorizes what section it should go into
-        
         if l.isupper():
             new_text = (text_ord - 65)
             new_value = new_text + key_value[i % len(key_value)]
@@ -70,6 +70,7 @@ def v_encrypt(text, u_key):
             new_message += str(new_value)
         else: 
             new_message += l 
+        print(i, l, new_text, u_key[u:u+1], key_value[i % len(key_value)], chr(new_value + 97))
     return new_message
 
         
@@ -88,12 +89,17 @@ def to_binary(string):
 
 
 def main():
-    text = input("Enter the plaintext you want to encrypt: ")
-    key = input("Enter the key for Vigenere cipher: ")
-    start_seq = input("Enter the start sequence: ")
-    end_seq = input("Enter the end sequence: ")
+    # text = input("Enter the plaintext you want to encrypt: ")
+    # key = input("Enter the key for Vigenere cipher: ")
+    # start_seq = input("Enter the start sequence: ")
+    # end_seq = input("Enter the end sequence: ")
+    text = "Team 11 is praiseworthy!!!"
+    key = "RItwKtCnrV"
+    start_seq = "117"
+    end_seq = "711"
     
     new_message = v_encrypt(text, key)
+    print(f"Encrypted Message using Vigenere Cipher: {new_message}")
     binary = to_binary(start_seq + new_message + end_seq)
     print(f"Binary output message: {binary}")
 

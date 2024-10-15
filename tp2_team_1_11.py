@@ -54,28 +54,30 @@ def compare_images(img1, img2, resultPath):
             value1 = img1[i][j] if(len(img1.shape)==3) else [img1[i][j]]
             value2 = img2[i][j] if(len(img2.shape)==3) else [img2[i][j]]
             for k in range(min(len(value1),3)):
-                
-                if(value1[k]%2==value2[k]%2):
+                if(value1[k]%2)==(value2[k]%2):
                     item.append(0)
                 else:
                     item.append(255)
                     different = True
+                # print(i, j, k, img1[i][j], img2[i][j], item[k])
             row.append([item[0],item[1],item[2]] if len(item)>1 else item[0])
+        # print(row)
         imgO.append(row)
     plt.imshow(imgO, cmap='gray', vmin= 0, vmax= 255)
     plt.savefig(resultPath)
     plt.show()
     return different
         
-
-
 def main():
-    path1 = input("Enter the path of your first image: ")
-    path2 = input("Enter the path of your second image: ")
-    pathDiff = input("Enter the path for the output image: ")
+    path1 = "bear_col.png"
+    path2 = "bear_col_020_11_v.png"
+    pathDiff = "diff.png"
+    # path1 = input("Enter the path of your first image: ")
+    # path2 = input("Enter the path of your second image: ")
+    # pathDiff = input("Enter the path for the output image: ")
     img1 = load_image(path1)
     img2 = load_image(path2)
-    if img1.ndim!=img2.ndim or img1.shape[0]!= img2.shape[0] or img1.shape[1] != img2.shape[1]:
+    if img1.ndim != img2.ndim or img1.shape[0] != img2.shape[0] or img1.shape[1] != img2.shape[1]:
         print("Cannot compare images in different modes (RGBA and L) or of different sizes.")
         print(img1.shape, img2.shape)
         return

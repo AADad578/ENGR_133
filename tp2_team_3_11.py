@@ -85,7 +85,7 @@ def encodeImage(binary_message,image_path,output_path):
                     value =image[i][j][k]
                     y=value % 2
                     bin_value=binary_message[pos:pos+1] 
-                    print(bin_value, y, image[i,j,k])
+                    # print(bin_value, y, image[i,j,k])
                     pos+=1
                     if int(bin_value)==y:
                         continue
@@ -93,7 +93,7 @@ def encodeImage(binary_message,image_path,output_path):
                         image[i,j,k]+=1
                     else:
                         image[i,j,k]-=1
-                    print(image[i,j,k])
+                    print(bin_value, image[i,j,k])
         
         pil_image = Image.fromarray(image)
         pil_image.save(output_path)
@@ -101,18 +101,18 @@ def encodeImage(binary_message,image_path,output_path):
     
 
 def main():
-    # message = "World"
-    # key = "Bear"
-    # start_seq = "007"
-    # end_seq = "700"
-    # imagePath = "ref_gry.png"
-    # outputPath = "ref_gry_e.png"
-    message = input("Enter the plaintext you want to encrypt: ")
-    key = input("Enter the key for Vigenere cipher: ")
-    start_seq = input("Enter the start sequence: ")
-    end_seq = input("Enter the end sequence: ")
-    imagePath = input("Enter the path of the image: ")
-    outputPath = input("Enter the path for the encoded image: ")
+    message = "Team 11 is exemplary!"
+    key = "RItwKtCnrV"
+    start_seq = "117"
+    end_seq = "711"
+    imagePath = "bear_col.png"
+    outputPath = "output.png"
+    # message = input("Enter the plaintext you want to encrypt: ")
+    # key = input("Enter the key for Vigenere cipher: ")
+    # start_seq = input("Enter the start sequence: ")
+    # end_seq = input("Enter the end sequence: ")
+    # imagePath = input("Enter the path of the image: ")
+    # outputPath = input("Enter the path for the encoded image: ")
     
     
     encrypted = v_encrypt(message, key)
