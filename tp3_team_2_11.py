@@ -33,6 +33,7 @@ Academic Integrity Statement:
 
 
 from tp1_team_2_11 import processImage
+from tp1_team_3_11 import binToText
 from tp2_team_1_11 import compare_images, load_image
 from tp2_team_2_11 import to_binary, v_encrypt
 from PIL import Image
@@ -41,23 +42,17 @@ import numpy as np
 
 from tp3_team_1_11 import xor, xor_cypher
 
-#from tp1_team_3_11.py
-def binToText(binary):
-    message = ""
-    for i in range(0, len(binary), 8):
-        group =  binary[i:i+8]
-        decoeded = chr(int(group,2))
-        message += decoeded
-    return message
 
 def c_decrypt(message, shift):
-    shift = int(shift) % 26  # Reduce the shift to the range 0-25
+    shift = int(shift)  # Reduce the shift to the range 0-25
     encrypted_text = ""
    
     for char in message:
         if char.isalpha():
             shift_base = ord('A') if char.isupper() else ord('a')
-            encrypted_text += chr((ord(char) - shift_base - shift) % 26 + shift_base)
+            encrypted_text += chr((ord(char) - shift_base - shift) % 26 + shift_base) #subtract instead of adding
+        elif char.isdigit():
+            encrypted_text += str((int(char)-shift)%10)
         else:
             encrypted_text += char  # Keep non-alphabetical characters unchanged (punctuation, spaces)
    
@@ -99,29 +94,29 @@ def v_decrypt(text, u_key):
             new_message += str(new_value)
         else: 
             new_message += l 
-        # print(i, l, new_text, u_key[u:u+1], key_value[i % len(key_value)], chr(new_value + 97))
     return new_message
 
 
 def main():
-    # cipher = input("Enter the cipher you want to use for encryption: ")
-    # key = input("Enter the key for the cipher: ")
-    # start = to_binary(input("Enter the start sequence: ")).replace(" ","")
-    # end = to_binary(input("Enter the end sequence: ")).replace(" ","")
-    # path = input("Enter the path of the input image: ")
-    cipher = "caesar"
-    key = "778"
-    start = to_binary("40").replace(" ","")
-    end = to_binary("04").replace(" ","")
-    path = "ref_col_c.png"
+    cipher = input("Enter the cipher you want to use for encryption: ")
+    key = input("Enter the key for the cipher: ")
+    start = to_binary(input("Enter the start sequence: ")).replace(" ","")
+    end = to_binary(input("Enter the end sequence: ")).replace(" ","")
+    path = input("Enter the path of the input image: ")
+    # cipher = "caesar"
+    # key = "778"
+    # start = to_binary("40").replace(" ","")
+    # end = to_binary("04").replace(" ","")
+    # path = "ref_col_c.png"
     
-    
+    #converts to binary
     output = processImage(path, start, end)
     if "0" in output or "1" in output: #if there is a 0 or 1 it must contain binary
         binary = output[19:]
     else:
         return    
     print(f"Extracted Binary Message: {binary}")
+    
     
     encrypted = binToText(binary)
     print(f"Converted Binary Text: {encrypted}")
