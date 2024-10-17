@@ -33,6 +33,21 @@ Academic Integrity Statement:
 
 from matplotlib import pyplot as plt
 import numpy as np
+#copied from tp1_team_2_11.py
+# finds the LSD of each value in an image
+def img_to_bin(img):
+    output = ""
+    isRGB = len(img.shape)==3 #if there are 3 dimensions its rgb not grayscale
+    
+    if(isRGB and img.shape[2]==4):
+        img = np.delete(img, 3, 2)        
+    for row in img:
+        for item in row:
+            values = item if isRGB else [item] #make a list with each value, if rgb the list is already made, else make one item list
+            for i in values: # for each value add to the output
+                output += str(i%2) #add 0 if even (LSD is 0) or 1 if odd (LSD is 1)
+    return output
+
 
 #copied from tp1_team_1_11.py
 def load_image(path):
@@ -47,29 +62,39 @@ def load_image(path):
 def compare_images(img1, img2, resultPath):
     different = False
     imgO = []
+    img1_bin = img_to_bin(img1)
+    img2_bin = img_to_bin(img2)
+    diff_bin = ""
+    for i in range(len(img1_bin)):
+        diff_bin += str(int(img1_bin[i]!=img2_bin[i])) #returns 1 if different
+    isRGB = img1.ndim==3
+    
+    counter = 0
     for i in range(img1.shape[0]):
         row = []
         for j in range(img1.shape[1]):
-            item = []
-            value1 = img1[i][j] if(len(img1.shape)==3) else [img1[i][j]]
-            value2 = img2[i][j] if(len(img2.shape)==3) else [img2[i][j]]
-            for k in range(min(len(value1),3)):
-                if(value1[k]%2)==(value2[k]%2):
-                    item.append(0)
-                else:
-                    item.append(255)
-                    different = True
-                # print(i, j, k, img1[i][j], img2[i][j], item[k])
-            row.append([item[0],item[1],item[2]] if len(item)>1 else item[0])
-        # print(row)
+            pixel = []
+            if(isRGB):
+                for k in range(3):
+                    different = different if diff_bin[counter]=="0" else True
+                    pixel.append(int(diff_bin[counter])*255)
+                    counter+=1
+                row.append(pixel)
+            else:
+                row.append(int(diff_bin[counter])*255)
+                different = different if diff_bin[counter]=="0" else True
+                counter +=1
+                
         imgO.append(row)
+    
     plt.imshow(imgO, cmap='gray', vmin= 0, vmax= 255)
-    plt.savefig(resultPath)
+    if(resultPath!=None):
+        plt.savefig(resultPath)
     plt.show()
     return different
         
 def main():
-    path1 = "bear_col.png"
+    path1 = "output.png"
     path2 = "bear_col_020_11_v.png"
     pathDiff = "diff.png"
     # path1 = input("Enter the path of your first image: ")

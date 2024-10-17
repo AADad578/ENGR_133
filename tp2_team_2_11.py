@@ -46,7 +46,7 @@ def v_encrypt(text, u_key):
             key_ord = ord(c)
             shift = (key_ord - 65)
             key_value.append(shift)
-    print(key_value)
+    # print(key_value)
     #main for loop that goes through all of the characters in the string
     new_message = ""
     for i in range(a):
@@ -70,7 +70,7 @@ def v_encrypt(text, u_key):
             new_message += str(new_value)
         else: 
             new_message += l 
-        print(i, l, new_text, u_key[u:u+1], key_value[i % len(key_value)], chr(new_value + 97))
+        # print(i, l, new_text, u_key[u:u+1], key_value[i % len(key_value)], chr(new_value + 97))
     return new_message
 
         
