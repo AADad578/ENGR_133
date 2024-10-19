@@ -79,10 +79,11 @@ def v_encrypt(text, u_key):
 #From Checkpoint 1 task 2
 def to_binary(string):
     output=""
-    for char in string:
-        byte = bin(ord(char))[2:]
-        output += "0"*(8-len(byte))+byte
-        output += " "
+    for char in string: #for each character
+        byte = bin(ord(char))[2:] #convert the character to the ASCII value and then to binary
+        # when converting to binary it gives you exactly the number of digits with "0b" before
+        output += "0"*(8-len(byte))+byte #add the missing zeros
+        output += " " # add a space after each byte for readability
     return output
 
 

@@ -33,6 +33,8 @@ Academic Integrity Statement:
 
 from matplotlib import pyplot as plt
 import numpy as np
+
+from tp1_team_1_11 import load_image
 #copied from tp1_team_2_11.py
 # finds the LSD of each value in an image
 def img_to_bin(img):
@@ -49,20 +51,10 @@ def img_to_bin(img):
     return output
 
 
-#copied from tp1_team_1_11.py
-def load_image(path):
-    img = plt.imread(path)
-    
-    if int(np.max(img)) <= 1.0:
-        img =img * 255
-        img = img.astype(np.uint8)
-        
-    return img
-
 def compare_images(img1, img2, resultPath):
     different = False
     imgO = []
-    img1_bin = img_to_bin(img1)
+    img1_bin = img_to_bin(img1)#converts both images to binary
     img2_bin = img_to_bin(img2)
     diff_bin = ""
     for i in range(len(img1_bin)):
@@ -72,24 +64,24 @@ def compare_images(img1, img2, resultPath):
     counter = 0
     for i in range(img1.shape[0]):
         row = []
-        for j in range(img1.shape[1]):
+        for j in range(img1.shape[1]): #iterate through image
             pixel = []
-            if(isRGB):
-                for k in range(3):
-                    different = different if diff_bin[counter]=="0" else True
-                    pixel.append(int(diff_bin[counter])*255)
-                    counter+=1
+            if(isRGB): #if its an rgb image
+                for k in range(3): 
+                    different = different if diff_bin[counter]=="0" else True #if this pixel is 0, keep it the same, otherwise change to True. This will change it to be True if any pixel is different
+                    pixel.append(int(diff_bin[counter])*255)#if the pixel is different, add 255 otherwise add 0
+                    counter+=1#increment counter to keep the place
                 row.append(pixel)
             else:
-                row.append(int(diff_bin[counter])*255)
+                row.append(int(diff_bin[counter])*255)#if the pixel is different, add 255 otherwise add 0
                 different = different if diff_bin[counter]=="0" else True
                 counter +=1
                 
         imgO.append(row)
     
-    plt.imshow(imgO, cmap='gray', vmin= 0, vmax= 255)
+    plt.imshow(imgO, cmap='gray', vmin= 0, vmax= 255)#show the difference map
     if(resultPath!=None):
-        plt.savefig(resultPath)
+        plt.savefig(resultPath)#save the image if requested
     plt.show()
     return different
         

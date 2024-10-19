@@ -39,16 +39,16 @@ import numpy as np
 from tp2_team_1_11 import load_image
 from tp2_team_2_11 import v_encrypt, to_binary
 
-
+#see tp3_team_1_11.py for full comments
 def encodeImage(binary_message,image_path,output_path):
-    binary_message = binary_message.replace(" ","")
-    image= load_image(image_path)
-    if image.ndim==2:
-        x= image.shape[0]*image.shape[1]
-        if len(binary_message)> x:
+    binary_message = binary_message.replace(" ","") #remove spaces from binary message
+    image= load_image(image_path) 
+    if image.ndim==2: #if grayscale
+        x= image.shape[0]*image.shape[1] #total number of encodable bits is equal to width*height
+        if len(binary_message)> x:#if its too long return error
             print("Given message is too long to be encoded in the image")
             return
-        pos=0
+        pos=0 #keep track of which position you are at
         for i in range(len(image)):
             if(pos>=len(binary_message)):
                 break
@@ -101,18 +101,12 @@ def encodeImage(binary_message,image_path,output_path):
     
 
 def main():
-    message = "Team 11 is exemplary!"
-    key = "RItwKtCnrV"
-    start_seq = "117"
-    end_seq = "711"
-    imagePath = "bear_col.png"
-    outputPath = "output.png"
-    # message = input("Enter the plaintext you want to encrypt: ")
-    # key = input("Enter the key for Vigenere cipher: ")
-    # start_seq = input("Enter the start sequence: ")
-    # end_seq = input("Enter the end sequence: ")
-    # imagePath = input("Enter the path of the image: ")
-    # outputPath = input("Enter the path for the encoded image: ")
+    message = input("Enter the plaintext you want to encrypt: ")
+    key = input("Enter the key for Vigenere cipher: ")
+    start_seq = input("Enter the start sequence: ")
+    end_seq = input("Enter the end sequence: ")
+    imagePath = input("Enter the path of the image: ")
+    outputPath = input("Enter the path for the encoded image: ")
     
     
     encrypted = v_encrypt(message, key)

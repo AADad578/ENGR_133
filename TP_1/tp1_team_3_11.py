@@ -35,10 +35,10 @@ Academic Integrity Statement:
 """ Write any import statements here (and delete this line)."""
 def binToText(binary):
     message = ""
-    for i in range(0, len(binary), 8):
+    for i in range(0, len(binary), 8): #take the binary message 8 digits at a time
         group =  binary[i:i+8]
-        decoeded = chr(int(group,2))
-        message += decoeded
+        decoeded = chr(int(group,2)) #convert to an integer in base 10 and use ASCII table to convert to letter
+        message += decoeded 
     return message
 
 def main():

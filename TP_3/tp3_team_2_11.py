@@ -3,13 +3,13 @@ Course Number: ENGR 13300
 Semester: Fall 2024
 
 Description:
-    TODO: Add
+    Decrypts the images
 
 Assignment Information:
-    Assignment:     TODO: Add
+    Assignment:     11.1.2
     Team ID:        022-11
     Author:         Ankur Raghavan, raghav21@purdue.edu
-    Date:           TODO: Add
+    Date:           10/16/2024
 
 Contributors:
     Name, login@purdue [repeat for each]
@@ -43,28 +43,26 @@ import numpy as np
 from tp3_team_1_11 import xor, xor_cypher
 
 
+# encrypt with the caesar cipher
 def c_decrypt(message, shift):
-    shift = int(shift)  # Reduce the shift to the range 0-25
+    shift = int(shift) #make sure the shift is a number
     encrypted_text = ""
    
     for char in message:
-        if char.isalpha():
-            shift_base = ord('A') if char.isupper() else ord('a')
-            encrypted_text += chr((ord(char) - shift_base - shift) % 26 + shift_base) #subtract instead of adding
-        elif char.isdigit():
-            encrypted_text += str((int(char)-shift)%10)
+        if char.isalpha(): #if its a letter
+            shift_base = ord('A') if char.isupper() else ord('a') #subtract the ord value for Capital A or lowercase a if it is upper or lowercase respectivly
+            encrypted_text += chr((ord(char) - shift_base - shift) % 26 + shift_base) # add the shift and mod 26 to ensure it is still a letter, and convert back to letter
+        elif char.isdigit(): #if its a number
+            encrypted_text += str((int(char)-shift)%10) #convert to a number and add the shift. Then mod 10 to ensure it is still one digit
         else:
             encrypted_text += char  # Keep non-alphabetical characters unchanged (punctuation, spaces)
    
-    return encrypted_text
+    return encrypted_text 
 
 def v_decrypt(text, u_key):
     key_value = []
-    u_key = u_key.upper()
-    #reading the text and making it the number
-
-    a = len(text)
-
+    u_key = u_key.upper() #should be all uppercase
+    
     #making the shift vaules into list, then using while to go through the values
     for c in u_key:
             key_ord = ord(c)
@@ -73,28 +71,28 @@ def v_decrypt(text, u_key):
     # print(key_value)
     #main for loop that goes through all of the characters in the string
     new_message = ""
-    for i in range(a):
+    for i in range(len(text)):
         l = text[i]  
         u = i % len(key_value)
         text_ord = ord(l) #cagegorizes what section it should go into
         if l.isupper():
-            new_text = (text_ord - 65)
-            new_value = new_text - key_value[i % len(key_value)]
-            new_value = new_value % 26 
-            new_message += chr(new_value + 65)
+            new_text = (text_ord - 65) #uppercase A in ASCII is 65
+            new_value = new_text - key_value[u] #shift by the key value
+            new_value = new_value % 26 # mod 26 to keep it a letter 
+            new_message += chr(new_value + 65) # convert back to a character
         elif l.islower():
-            new_text = (text_ord - 97)
-            new_value = new_text - key_value[i % len(key_value)]
-            new_value = new_value % 26 
-            new_message += chr(new_value + 97)
+            new_text = (text_ord - 97) #lowercase a in ASCII is 97
+            new_value = new_text - key_value[u] #shift by the key value
+            new_value = new_value % 26 # mod 26 to keep it a letter 
+            new_message += chr(new_value + 97) # convert back to a character
         elif l.isdigit():
-            new_text = int(l)
-            new_value = new_text - key_value[i % len(key_value)]
-            new_value = new_value % 10
-            new_message += str(new_value)
+            new_text = int(l) #convert to a number
+            new_value = new_text - key_value[u] #shift by the key value
+            new_value = new_value % 10 # mod 10 to keep it a single digit 
+            new_message += str(new_value) #convert back to string
         else: 
-            new_message += l 
-    return new_message
+            new_message += l #if its not a letter/number don't change it
+    return new_message 
 
 
 def main():
@@ -103,14 +101,9 @@ def main():
     start = to_binary(input("Enter the start sequence: ")).replace(" ","")
     end = to_binary(input("Enter the end sequence: ")).replace(" ","")
     path = input("Enter the path of the input image: ")
-    # cipher = "caesar"
-    # key = "778"
-    # start = to_binary("40").replace(" ","")
-    # end = to_binary("04").replace(" ","")
-    # path = "ref_col_c.png"
     
     #converts to binary
-    output = processImage(path, start, end)
+    output = processImage(path, start, end) #cconverts image to binary, removing the start and end sequence
     if "0" in output or "1" in output: #if there is a 0 or 1 it must contain binary
         binary = output[19:]
     else:
@@ -118,15 +111,15 @@ def main():
     print(f"Extracted Binary Message: {binary}")
     
     
-    encrypted = binToText(binary)
+    encrypted = binToText(binary) #convert back to text
     print(f"Converted Binary Text: {encrypted}")
     match cipher:
         case "vigenere":
-            message = v_decrypt(encrypted, key)
+            message = v_decrypt(encrypted, key) # decrypt text using key
         case "caesar":
-            message = c_decrypt(encrypted, key)
+            message = c_decrypt(encrypted, key) # decrypt text using key
         case "xor":
-            message = binToText(xor_cypher(encrypted, key).replace(" ",""))
+            message = binToText(xor_cypher(encrypted, key).replace(" ","")) #decrypt, returns binary, so convert back
         case _:
             print("error")
             return

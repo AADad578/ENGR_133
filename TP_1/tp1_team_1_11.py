@@ -35,11 +35,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def load_image(path):
-    img = plt.imread(path)
+    img = plt.imread(path) #read the image
     
-    if int(np.max(img)) <= 1.0:
-        img =img * 255
-        img = img.astype(np.uint8)
+    if int(np.max(img)) <= 1.0: #if the maximum is less than 1, it must be in the range 0-1 not 0-255.
+        img =img * 255 # multiply the float by 255
+        img = img.astype(np.uint8) #convert back to integer
         
     return img
 
